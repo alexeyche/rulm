@@ -227,7 +227,7 @@ def train(
         data_collator=data_collator
     )
 
-    with wandb.init(project="rulm_self_instruct", name=config_file) as run:
+    with wandb.init(project="mirror_mind", name=config_file) as run:
         trainer.train(checkpoint)
         model.save_pretrained(output_dir)
 
