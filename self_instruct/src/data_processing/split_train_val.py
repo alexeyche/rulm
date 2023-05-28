@@ -28,9 +28,9 @@ val_records = res[border:]
 print(f"Writing {len(train_records)} messages into {dst_train_file}")
 with open(dst_train_file, "w") as w:
     for record in train_records:
-        w.write(json.dumps({"messages": record, "source": "chat"}, ensure_ascii=False).strip() + "\n")
+        w.write(json.dumps(record, ensure_ascii=False).strip() + "\n")
 
 print(f"Writing {len(val_records)} messages into {dst_val_file}")
 with open(dst_val_file, "w") as w:
     for record in val_records:
-        w.write(json.dumps({"messages": record, "source": "chat"}, ensure_ascii=False).strip() + "\n")
+        w.write(json.dumps(record, ensure_ascii=False).strip() + "\n")
