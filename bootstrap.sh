@@ -7,7 +7,7 @@ apt update
 apt install -y vim git-lfs screen
 
 pushd /workspace/rulm
-pip install -r requirements.txt &
+(pip install -r requirements.txt && echo "Install done") &
 popd
 
 pushd /workspace
@@ -20,5 +20,6 @@ pushd /workspace/rulm/self_instruct/models
 git clone https://huggingface.co/AlexeyChe/llama-7b-lora
 popd
 
+echo "Checkout model done"
 
 wait
