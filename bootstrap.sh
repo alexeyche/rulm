@@ -19,7 +19,7 @@ popd
 mkdir /workspace/rulm/self_instruct/models
 
 pushd /workspace/rulm/self_instruct/models
-git clone https://huggingface.co/AlexeyChe/
+git clone https://huggingface.co/AlexeyChe/$MODEL
 popd
 
 echo "Checkout model done"
