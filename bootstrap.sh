@@ -2,11 +2,13 @@
 
 set -ex
 
+python -c "import torch; import sys; sys.exit(0 if torch.cuda.is_available() else 1)" || (echo "CUDA is not found" && exit 1)
+
 MODEL=$1
 
 apt update
 
-apt install -y vim git-lfs screen
+apt install -y vim git-lfs screen less
 
 pushd /workspace/rulm
 (pip install -r requirements.txt && echo "Install done") &
