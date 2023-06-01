@@ -2,6 +2,8 @@
 
 set -ex
 
+MODEL=$1
+
 apt update
 
 apt install -y vim git-lfs screen
@@ -17,7 +19,7 @@ popd
 mkdir /workspace/rulm/self_instruct/models
 
 pushd /workspace/rulm/self_instruct/models
-git clone https://huggingface.co/AlexeyChe/llama-7b-lora
+git clone https://huggingface.co/AlexeyChe/
 popd
 
 echo "Checkout model done"
