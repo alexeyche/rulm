@@ -22,10 +22,12 @@ class Conversation:
         self.start_token_id = start_token_id
         self.end_token_id = end_token_id
         self.bot_token_id = bot_token_id
-        self.messages = [{
-            "role": "system",
-            "content": system_prompt
-        }]
+        self.messages = []
+        if system_prompt:
+            self.messages.append({
+                "role": "system",
+                "content": system_prompt
+            })
 
     def get_end_token_id(self):
         return self.end_token_id
