@@ -2,9 +2,11 @@
 
 set -ex
 
-python -c "import torch; import sys; sys.exit(0 if torch.cuda.is_available() else 1)" || (echo "CUDA is not found" && exit 1)
-
 MODEL=$1
+
+[ -z "$MODEL" ] && echo "Set model as first argument" && exit 1
+
+python -c "import torch; import sys; sys.exit(0 if torch.cuda.is_available() else 1)" || (echo "CUDA is not found" && exit 1)
 
 apt update
 
