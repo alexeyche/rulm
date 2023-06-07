@@ -10,7 +10,7 @@ from tqdm import tqdm
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausalLM, DataCollatorForTokenClassification, DataCollatorForSeq2Seq
 from transformers import Trainer, TrainingArguments, logging, TrainerCallback, TrainerState, TrainerControl
 from transformers.trainer_utils import PREFIX_CHECKPOINT_DIR
-from peft import get_peft_model, LoraConfig, prepare_model_for_int8_training
+from peft import get_peft_model, LoraConfig, prepare_model_for_int8_training, set_peft_model_state_dict
 
 from src.dataset import InstructDataset, ChatDataset
 from src.util.dl import set_random_seed, fix_tokenizer, fix_model
@@ -215,6 +215,8 @@ def train(
     if lora_config:
         lora_config = LoraConfig(**lora_config)
         model = get_peft_model(model, lora_config)
+        # adapters_weights = torch.load("./models/mirror_mind_13b/checkpoint-125/adapter_model/adapter_model.bin")
+        # set_peft_model_state_dict(model, adapters_weights)
 
     trainer_class = Trainer if not omit_base_model_save else TrainerNoBaseSave
     print("Trainer class:", trainer_class)
